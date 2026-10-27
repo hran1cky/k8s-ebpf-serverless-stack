@@ -33,15 +33,6 @@ Výsledok: Po 10 sekundách neaktivity sa počet bežiacich podov automaticky zn
 
 
 
-🚀 Spustenie Projektu
-
-# 1. Vytvorenie klastra a nahratie Docker obrazu
-kind create cluster --name devops-cluster
-kind load docker-image devops-backend:v1 --name devops-cluster
-
-# 2. Nasadenie eBPF Ochrany (Tetragon)
-helm repo add cilium https://helm.cilium.io/
-helm install tetragon cilium/tetragon -n kube-system
 kubectl apply -f k8s/block-shell.yaml
 
 # 3. Nasadenie Serverless Služby (Knative)
