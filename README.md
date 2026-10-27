@@ -28,12 +28,3 @@ Výsledok: Pokus o neautorizovaný vstup do shellu (kubectl exec -it ... -- /bin
 3. Serverless "Scale-to-Zero" (Knative)
 Preklopenie aplikácie na Knative Service (KSVC).
 Výsledok: Po 10 sekundách neaktivity sa počet bežiacich podov automaticky zníži na 0 (0 % spotreba CPU/RAM). Pri príchode HTTP požiadavky vykoná Knative okamžitý Cold Start a spracuje požiadavku.
-
-
-
-
-
-kubectl apply -f k8s/block-shell.yaml
-
-# 3. Nasadenie Serverless Služby (Knative)
-kubectl apply -f k8s/serverless-backend.yaml
