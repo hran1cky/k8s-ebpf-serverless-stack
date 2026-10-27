@@ -1,0 +1,21 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: backend-serverless
+  namespace: default
+spec:
+  template:
+    metadata:
+      name: backend-serverless-v3
+      annotations:
+        autoscaling.knative.dev/min-scale: "0"
+        autoscaling.knative.dev/window: "10s"
+    spec:
+      containers:
+      - image: devops-backend:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REDIS_HOST
+          value: "redis-db"

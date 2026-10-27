@@ -1,0 +1,24 @@
+services:
+  redis-db:
+    image: redis:alpine
+    container_name: devops-redis
+    ports:
+      - "6379:6379"
+
+  backend-api:
+    build: ./backend
+    container_name: devops-backend
+    ports:
+      - "5001:5000"
+    environment:
+      - REDIS_HOST=redis-db
+    depends_on:
+      - redis-db
+
+  frontend-web:
+    build: ./frontend
+    container_name: devops-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend-api
